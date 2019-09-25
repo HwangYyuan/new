@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+	</body>
+	<script>
+		let data = [{
+			"id": "828",
+			"pId": "26",
+			"name": "亚洲",
+			"checked": false
+		}, {
+			"id": "829",
+			"pId": "26",
+			"name": "欧洲",
+			"checked": false
+		}, {
+			"id": "830",
+			"pId": "26",
+			"name": "非洲",
+			"checked": false
+		}, {
+			"id": "831",
+			"pId": "26",
+			"name": "美洲",
+			"checked": false
+		}, {
+			"id": "832",
+			"pId": "26",
+			"name": "南美洲",
+			"checked": false
+		}, {
+			"id": "833",
+			"pId": "26",
+			"name": "大洋洲",
+			"checked": false
+		}, {
+			"id": "834",
+			"pId": "828",
+			"name": "东亚",
+			"checked": false
+		}, {
+			"id": "835",
+			"pId": "828",
+			"name": "东南亚",
+			"checked": false
+		}, {
+			"id": "836",
+			"pId": "828",    
+			"name": "南亚",
+			"checked": false  
+		}, {
+			"id": "837",
+			"pId": "828",
+			"name": "中亚",
+			"checked": false
+		}, {
+			"id": "838",
+			"pId": "828",
+			"name": "西亚",
+			"checked": false
+		}, {
+			"id": "839",
+			"pId": "829",
+			"name": "北欧",
+			"checked": false
+		}, {
+			"id": "840",
+			"pId": "829",
+			"name": "东欧",
+			"checked": false
+		}, {
+			"id": "841",
+			"pId": "829",
+			"name": "中欧",
+			"checked": false
+		}, {
+			"id": "842",
+			"pId": "829",
+			"name": "西欧",
+			"checked": false
+		}, {
+			"id": "843",
+			"pId": "829",
+			"name": "南欧",
+			"checked": false
+		}, {
+			"id": "60",
+			"pId": "834",
+			"name": "中国",
+			"checked": false
+		}, {
+			"id": "61",
+			"pId": "834",
+			"name": "蒙古",
+			"checked": false
+		}, {
+			"id": "62",
+			"pId": "834",
+			"name": "朝鲜",
+			"checked": false
+		}, {
+			"id": "63",
+			"pId": "834",
+			"name": "韩国",
+			"checked": false,
+			"children":""
+		}, {
+			"id": "1",
+			"pId": "63",
+			"name": "韩国城市0",
+			"checked": false
+		},{
+			"id": "2",
+			"pId": "63",
+			"name": "韩国城市1",
+			"checked": false
+		},{
+			"id": "64",
+			"pId": "834",
+			"name": "日本",
+			"checked": false
+		}, {
+			"id": "65",
+			"pId": "835",
+			"name": "菲律宾",
+			"checked": false
+		}]
+		//用递归组装数据返回:  
+//		let result = [{
+//			title: '亚洲',
+//			children: [{
+//				title: 东亚 ',
+//				children: [{
+//						title: '韩国'
+//					},
+//					{
+//						title: '日本'
+//					}
+//				]
+//			}]
+//		}]
+
+		let states = data.filter((x)=>{
+			return x.pId == 26
+		})
+		console.log(states)
+		function getTree(obj,data){
+			let isArray = Object.prototype.toString.call(obj) === '[object Array]'
+			let isObject = Object.prototype.toString.call(obj) === '[object Object]'
+			if(isObject){
+				for(let k in obj){
+					if(obj.id){
+						let children = []
+						children = data.filter((x)=>{
+							return x.pId == obj.id
+						})
+						obj.title = obj.name
+						if(children.length>0){
+							obj.children = children
+						}
+					}
+					if(obj.children){
+						for(let k in obj.children){
+							obj.children[k] = obj.children[k] instanceof Object  ? getTree(obj.children[k],data) :obj.children[k]
+						}
+					}
+					obj[k] = obj[k] instanceof Object  ? getTree(obj[k],data) :obj[k]
+				}
+			} 
+			if(isArray){
+				obj.forEach((x,k)=>{
+					if(x.id){
+						let children = []
+						children = data.filter((y)=>{
+							return y.pId == obj.id
+						})
+						if(children.length>0){
+							x.children = children
+						}
+					}
+					obj[k] = x instanceof Object  ? getTree(obj[k],data) :obj[k]
+				})
+			} 
+		}
+		let result = getTree(states,data)
+	</script>
+</html> 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width:200px;
+            position:relative;
+        }
+        .wrap .triangle_border_left{
+            position:absolute;
+            left:0;top:0;
+            width:0;
+            height:0;
+            border-width:30px 30px 30px 0;
+            border-style:solid;
+            border-color:transparent #58bc58 transparent transparent;/*透明 灰 透明 透明 */
+        }
+        .wrap .retan{
+            position:absolute;
+            left:30px;
+            top:0;
+            height:60px;
+            background:#58bc58;
+            text-align:center;
+            line-height:60px;
+        }
+        .triangle_border_left .circle{
+            width:8px;
+            height:8px;
+            background:#fff;
+            position:absolute;
+            left:16px;
+            top:50%;
+            transform: translate(0,-50%);
+            border-radius:50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+            <div class="triangle_border_left">
+                    <div class="circle"></div>
+                </div>
+                <div class="retan">1231234543354gfdgsnidemingzizhende</div>
+                <!-- <div class="circle"></div> -->
+    </div>
+    <div></div>
+</body>
+</html>

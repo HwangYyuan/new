@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=0.4">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" rel="external nofollow" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>社区公卫系统</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      // 三级等保要求：关闭页面直接清掉缓存数据(token/用户名/密码)
+      window.onload = function () {
+        let pageNum = +(localStorage.getItem('pageNum') || 0) + 1
+        localStorage.setItem('pageNum', pageNum)
+        // 三级等保要求：控制页面数量 50
+        if(pageNum >= 50) {
+          vm.$alert('您打开页面数量过多了，请限制在50个内!')
+            .then(() => {
+              CloseWebPage()
+            })
+        }
+        console.log(+Date.now() - (+localStorage.getItem('lastestLeaveTime')))
+        if(+Date.now() - (+localStorage.getItem('lastestLeaveTime')) > 6000) {
+          if(pageNum <= 1) { // 非多标签页
+            // 关闭窗口
+            localStorage.clear();
+            window.location.reload();
+          }
+        } else {
+          // 刷新页面
+        }
+      }
+      window.onunload = function() {
+        localStorage.setItem('lastestLeaveTime', Date.now())
+        let pageNum = +(localStorage.getItem('pageNum') || 0) - 1
+        localStorage.setItem('pageNum', pageNum === -1 ? 0 : pageNum)
+      }
+      // 关闭 当前tab页
+      function CloseWebPage(){
+        if (navigator.userAgent.indexOf("MSIE") > 0) {
+          if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {
+            window.opener = null;
+            window.close();
+          }else {
+            window.open('', '_top');
+            window.top.close();
+          }
+        }else if (navigator.userAgent.indexOf("Firefox")>0 || navigator.userAgent.indexOf("Chrome")> 0) {
+          window.location.href="about:blank";
+          window.close();
+        }else {
+          window.opener=null; 
+          window.open('','_self');
+          window.close();
+        }
+      }
+    </script>
+  </body>
+</html>

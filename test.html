@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+<body>
+    <div>1111</div>
+        <script>
+    //         console.log( window)
+    window.onbeforeunload = function (e) {
+        return '您的视频时间尚未结束，现在退出将无法回到视频';
+    }
+    // $(window).on('beforeunload', function() {
+    //             return '您的视频时间尚未结束，现在退出将无法回到视频';
+    //         })
+    window.onbeforeunload = function(e){
+        return ''
+    }
+        </script>
+</body>
+</html>

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        td,th{
+            border: 1px solid #000;
+            padding:5px 0 5px 5px;
+            font-size:16px;
+        }
+        input{
+            border:0 none;
+            font-size:16px;
+            outline:none;
+            display:none;
+        }
+        table,.cMedicine{
+            width:800px;
+            margin:0 auto;
+        }
+        table{
+            border-collapse: collapse; border-spacing: 0;
+        }
+        label{
+            display:inline-block;
+            cursor: pointer;
+            margin-right:10px;
+        }
+        label i{
+            display:inline-block;
+            width:12px;
+            height:12px;
+            border:1px solid #000;
+            vertical-align: middle;
+            line-height:12px;
+            text-align:center;
+            font-style:normal;
+            font-weight:bold;
+            font-size:0;
+        }
+        input[type="checkbox"]:checked+i{
+            font-size:12px;
+        }
+        textarea{
+            padding:10px;
+            border:0 none;
+            outline:none;
+            resize:none;
+            font-size:16px;
+        }
+        .cMedicine h1{
+            line-height:40px;
+            font-size:26px;
+            font-weight:700;
+            text-align:center;
+        }
+        .cMedicine h2{
+            line-height:50px;
+            text-align:right;
+            font-size:18px;
+            font-weight:normal;
+        }
+        .cMedicine .historySick{
+            margin-right:16px;
+        }
+        .cMedicine .left-title{
+            font-size:18px;
+        }
+    </style>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <div class="cMedicine">
+        <h1>中医理疗评估表</h1>
+        <form action="">
+            <table cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td colspan="2" width="25%" align="left" class="left-title">档案号：<input type="text" style="width:50%;display:inline-block;"></td>
+                        <td colspan="2" width="25%" align="left" class="left-title">姓名：<input type="text" style="width:50%;display:inline-block;"></td>
+                        <td colspan="2" width="25%" align="left" class="left-title">性别：<input type="text" style="width:50%;display:inline-block;"></td>
+                        <td colspan="2" width="25%" align="left" class="left-title">年龄： <input type="text" style="outline:none;width:40%;display:inline-block;">岁</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">主诉</td>
+                        <td colspan="7">
+                            <textarea name="" id="" cols="80%" rows="2"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">现病史</td>
+                        <td colspan="7"><textarea name="" id="" cols="80%" rows="2"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">既往史</td>
+                        <td colspan="7">
+                            <label for="hisSick-1">
+                                <span>高血压</span>
+                                <input type="checkbox" name="historySick" value="高血压" id="hisSick-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hisSick-2">
+                                <span>糖尿病</span>
+                                <input type="checkbox" name="historySick" value="糖尿病" id="hisSick-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hisSick-3">
+                                <span>冠心病</span>
+                                <input type="checkbox" name="historySick" value="冠心病" id="hisSick-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hisSick-4">
+                                <span>痛风</span>
+                                <input type="checkbox" name="historySick" value="痛风" id="hisSick-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hisSick-5">
+                                <span>中风</span>
+                                <input type="checkbox" name="historySick" value="中风" id="hisSick-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hisSick-6">
+                                <span>慢阻肺</span>
+                                <input type="checkbox" name="historySick" value="慢阻肺" id="hisSick-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hisSick-7">
+                                <span>肾病综合征</span>
+                                <input type="checkbox" name="historySick" value="肾病综合征" id="hisSick-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:30%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">手术史</td>
+                        <td colspan="7">
+                            <label for="operation-1">
+                                <span>膝关节置换术</span>
+                                <input type="checkbox" name="operation" value="膝关节置换术" id="operation-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="operation-2">
+                                <span>股骨头置换术</span>
+                                <input type="checkbox" name="operation" value="股骨头置换术" id="operation-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="operation-3">
+                                <span>心脏支架</span>
+                                <input type="checkbox" name="operation" value="心脏支架" id="operation-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="operation-4">
+                                <span>心脏起博器</span>
+                                <input type="checkbox" name="operation" value="心脏起博器" id="operation-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="operation-5">
+                                <span>Ca放化疗术</span>
+                                <input type="checkbox" name="operation" value="Ca放化疗术" id="operation-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="operation-6">
+                                <span>颈腰椎钢板内固定</span>
+                                <input type="checkbox" name="operation" value="颈腰椎钢板内固定" id="operation-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:35%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">个人嗜好</td>
+                        <td colspan="7">
+                            <label for="hobbies-1">
+                                <span>嗜烟</span>
+                                <input type="checkbox" name="hobbies" value="嗜烟" id="hobbies-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-2">
+                                <span>嗜酒</span>
+                                <input type="checkbox" name="hobbies" value="嗜酒" id="hobbies-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-3">
+                                <span>嗜酸</span>
+                                <input type="checkbox" name="hobbies" value="嗜酸" id="hobbies-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-4">
+                                <span>嗜醋</span>
+                                <input type="checkbox" name="hobbies" value="嗜醋" id="hobbies-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-5">
+                                <span>嗜咸</span>
+                                <input type="checkbox" name="hobbies" value="嗜咸" id="hobbies-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-6">
+                                <span>嗜辣</span>
+                                <input type="checkbox" name="hobbies" value="嗜辣" id="hobbies-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-7">
+                                <span>嗜甜</span>
+                                <input type="checkbox" name="hobbies" value="嗜甜" id="hobbies-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-8">
+                                <span>熬夜</span>
+                                <input type="checkbox" name="hobbies" value="熬夜" id="hobbies-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="hobbies-9">
+                                <span>素食</span>
+                                <input type="checkbox" name="hobbies" value="素食" id="hobbies-9" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" align="center" class="left-title">望诊</td>
+                        <td align="center" class="left-title">望神</td>
+                        <td colspan="6">
+                            <label for="inSpirit-1">
+                                <span>得神</span>
+                                <input type="checkbox" name="inSpirit" value="得神" id="inSpirit-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="inSpirit-2">
+                                <span>失神</span>
+                                <input type="checkbox" name="inSpirit" value="失神" id="inSpirit-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="inSpirit-3">
+                                <span>少神</span>
+                                <input type="checkbox" name="inSpirit" value="少神" id="inSpirit-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="inSpirit-4">
+                                <span>假神</span>
+                                <input type="checkbox" name="inSpirit" value="假神" id="inSpirit-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="inSpirit-5">
+                                <span>神乱</span>
+                                <input type="checkbox" name="inSpirit" value="神乱" id="inSpirit-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="inSpirit-6">
+                                <span>神气不足</span>
+                                <input type="checkbox" name="inSpirit" value="神气不足" id="inSpirit-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">望面色</td>
+                        <td colspan="6">
+                            <label for="facial-1">
+                                <span>青色</span>
+                                <input type="checkbox" name="facial" value="青色" id="facial-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="facial-2">
+                                <span>赤色</span>
+                                <input type="checkbox" name="facial" value="赤色" id="facial-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="facial-3">
+                                <span>黄色</span>
+                                <input type="checkbox" name="facial" value="黄色" id="facial-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="facial-4">
+                                <span>白色</span>
+                                <input type="checkbox" name="facial" value="白色" id="facial-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="facial-5">
+                                <span>黑色</span>
+                                <input type="checkbox" name="facial" value="黑色" id="facial-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td>8</td> -->
+                        <td rowspan="2" align="center" class="left-title">
+                            望舌质
+                            /舌苔
+                        </td>
+                        <td colspan="6">
+                            <label for="tongue-1">
+                                <span>淡白舌</span>
+                                <input type="checkbox" name="tongue" value="淡白舌" id="tongue-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-2">
+                                <span>红舌</span>
+                                <input type="checkbox" name="tongue" value="红舌" id="tongue-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-3">
+                                <span>绛舌</span>
+                                <input type="checkbox" name="tongue" value="绛舌" id="tongue-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-4">
+                                <span>青紫舌</span>
+                                <input type="checkbox" name="tongue" value="青紫舌" id="tongue-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-5">
+                                <span>裂纹舌</span>
+                                <input type="checkbox" name="tongue" value="裂纹舌" id="tongue-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-6">
+                                <span>齿痕舌</span>
+                                <input type="checkbox" name="tongue" value="齿痕舌" id="tongue-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-7">
+                                <span>颤舌</span>
+                                <input type="checkbox" name="tongue" value="颤舌" id="tongue-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-8">
+                                <span>歪斜舌</span>
+                                <input type="checkbox" name="tongue" value="歪斜舌" id="tongue-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-9">
+                                <span>痿软舌</span>
+                                <input type="checkbox" name="tongue" value="痿软舌" id="tongue-9" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-10">
+                                <span>强硬舌</span>
+                                <input type="checkbox" name="tongue" value="强硬舌" id="tongue-10" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-11">
+                                <span>短缩舌</span>
+                                <input type="checkbox" name="tongue" value="短缩舌" id="tongue-11" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="tongue-12">
+                                <span>舌下淤脉</span>
+                                <input type="checkbox" name="tongue" value="舌下淤脉" id="tongue-12" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td>9</td> -->
+                        <!-- <td>9</td> -->
+                        <td colspan="6">
+                            <label for="moss-1">
+                                <span>白苔</span>
+                                <input type="checkbox" name="moss" value="白苔" id="moss-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="moss-2">
+                                <span>黄苔</span> 
+                                <input type="checkbox" name="moss" value="黄苔" id="moss-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="moss-3">
+                                <span>灰黑苔</span>
+                                <input type="checkbox" name="moss" value="灰黑苔" id="moss-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="moss-4">
+                                <span>剥落苔</span>
+                                <input type="checkbox" name="moss" value="剥落苔" id="moss-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="moss-5">
+                                <span>腐腻苔</span>   
+                                <input type="checkbox" name="moss" value="腐腻苔" id="moss-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">闻诊</td>
+                        <td colspan="7">
+                            <label for="smell-1">
+                                <span>血腥味</span>
+                                <input type="checkbox" name="smell" value="血腥味" id="smell-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="smell-2">
+                                <span>尿臊味</span>
+                                <input type="checkbox" name="smell" value="尿臊味" id="smell-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="smell-3">
+                                <span>烂苹果味</span>
+                                <input type="checkbox" name="smell" value="烂苹果味" id="smell-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="smell-4">
+                                <span>口气臭秽</span>
+                                <input type="checkbox" name="smell" value="口气臭秽" id="smell-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="smell-5">
+                                <span>口气腐臭</span>
+                                <input type="checkbox" name="smell" value="口气腐臭" id="smell-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7" align="center" class="left-title">问诊</td>
+                        <td align="center" class="left-title">问汗</td>
+                        <td colspan="6">
+                            <label for="sweat-1">
+                                <span>自汗</span>
+                                <input type="checkbox" name="sweat" value="自汗" id="sweat-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sweat-2">
+                                <span>盗汗</span>
+                                <input type="checkbox" name="sweat" value="盗汗" id="sweat-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sweat-3">
+                                <span>头汗</span>
+                                <input type="checkbox" name="sweat" value="头汗" id="sweat-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sweat-4">
+                                <span>半身汗</span>
+                                <input type="checkbox" name="sweat" value="半身汗" id="sweat-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sweat-5">
+                                <span>手足心汗</span>
+                                <input type="checkbox" name="sweat" value="手足心汗" id="sweat-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">问疼痛</td>
+                        <td colspan="6">
+                            <label for="pain-1">
+                                <span>胀痛</span>
+                                <input type="checkbox" name="pain" value="胀痛" id="pain-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="pain-2">
+                                <span>刺痛</span>
+                                <input type="checkbox" name="pain" value="刺痛" id="pain-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="pain-3">
+                                <span>冷痛</span>
+                                <input type="checkbox" name="pain" value="冷痛" id="pain-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="pain-4">
+                                <span>固定疼</span>
+                                <input type="checkbox" name="pain" value="固定疼" id="pain-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="pain-5">
+                                <span>隐痛</span>
+                                <input type="checkbox" name="pain" value="隐痛" id="pain-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="pain-6">
+                                <span>掣痛</span>
+                                <input type="checkbox" name="pain" value="掣痛" id="pain-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="pain-7">
+                                <span>酸痛</span>
+                                <input type="checkbox" name="pain" value="酸痛" id="pain-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>部位</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                        <!-- <td>12</td>
+                                <td>12</td>
+                                <td>12</td>
+                                <td>12</td>
+                                <td>12</td> -->
+                    </tr>
+                    <tr>
+                        <!-- <td>13</td> -->
+                        <td align="center" class="left-title">问头、身、胸、腹</td>
+                        <td colspan="6">
+                            <label for="body-1">
+                                <span>头晕</span>
+                                <input type="checkbox" name="body" value="头晕" id="body-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-2">
+                                <span>胸闷</span>
+                                <input type="checkbox" name="body" value="胸闷" id="body-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-3">
+                                <span>心悸</span>
+                                <input type="checkbox" name="body" value="心悸" id="body-3" class="historySick">
+                                <i>√</i>    
+                            </label>
+                            <label for="body-4">
+                                <span>怔忡</span>
+                                <input type="checkbox" name="body" value="怔忡" id="body-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-5">
+                                <span>脘痞</span>
+                                <input type="checkbox" name="body" value="脘痞" id="body-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-6">
+                                <span>腹胀</span>
+                                <input type="checkbox" name="body" value="腹胀" id="body-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-7">
+                                <span>耳鸣</span>
+                                <input type="checkbox" name="body" value="耳鸣" id="body-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-8">
+                                <span>目昏</span>
+                                <input type="checkbox" name="body" value="目昏" id="body-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="body-9">
+                                <span>目眩</span>
+                                <input type="checkbox" name="body" value="目眩" id="body-9" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td>14</td> -->
+                        <td align="center" class="left-title">问睡眠</td>
+                        <td colspan="6">
+                            <label for="sleep-1">
+                                <span>不易入睡</span>
+                                <input type="checkbox" name="sleep" value="不易入睡" id="sleep-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sleep-2">
+                                <span>睡后易醒</span>
+                                <input type="checkbox" name="sleep" value="睡后易醒" id="sleep-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sleep-3">
+                                <span>困倦易睡</span>
+                                <input type="checkbox" name="sleep" value="困倦易睡" id="sleep-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sleep-4">
+                                <span>睡眠易惊</span>
+                                <input type="checkbox" name="sleep" value="睡眠易惊" id="sleep-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="sleep-5">
+                                <span>饭后神疲易睡</span>
+                                <input type="checkbox" name="sleep" value="饭后神疲易睡" id="sleep-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td>15</td> -->
+                        <td align="center" class="left-title">问饮食口味</td>
+                        <td colspan="6">
+                            <label for="food-1">
+                                <span>口淡</span>
+                                <input type="checkbox" name="food" value="口淡" id="food-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-2">
+                                <span>口甜</span>
+                                <input type="checkbox" name="food" value="口甜" id="food-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-3">
+                                <span>口黏腻</span>
+                                <input type="checkbox" name="food" value="黏腻" id="food-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-4">
+                                <span>口酸</span>
+                                <input type="checkbox" name="food" value="口酸" id="food-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-5">
+                                <span>口涩</span>
+                                <input type="checkbox" name="food" value="口涩" id="food-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-6">
+                                <span>口苦</span>
+                                <input type="checkbox" name="food" value="口苦" id="food-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-7">
+                                <span>厌食</span>
+                                <input type="checkbox" name="food" value="厌食" id="food-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-8">
+                                <span>饥不欲食</span>
+                                <input type="checkbox" name="food" value="饥不欲食" id="food-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-9">
+                                <span>消谷善饥</span>
+                                <input type="checkbox" name="food" value="消谷善饥" id="food-9" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-10">
+                                <span> 口咸</span>
+                                <input type="checkbox" name="food" value=" 口咸" id="food-10" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-11">
+                                <span>口渴多饮</span>
+                                <input type="checkbox" name="food" value="口渴多饮" id="food-11" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="food-12">
+                                <span>渴不多饮</span>
+                                <input type="checkbox" name="food" value="渴不多饮" id="food-12" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td>16</td> -->
+                        <td align="center" class="left-title">问二便</td>
+                        <td colspan="6">
+                            <label for="shit-1">
+                                <span>便秘</span>
+                                <input type="checkbox" name="shit" value="便秘" id="shit-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-2">
+                                <span>泄泻</span>
+                                <input type="checkbox" name="shit" value="泄泻" id="shit-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-3">
+                                <span>完谷不化</span>
+                                <input type="checkbox" name="shit" value="完谷不化" id="shit-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-4">
+                                <span>溏结不调</span>
+                                <input type="checkbox" name="shit" value="溏结不调" id="shit-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-5">
+                                <span>便血</span>
+                                <input type="checkbox" name="shit" value="便血" id="shit-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-6">
+                                <span>脓血</span>
+                                <input type="checkbox" name="shit" value="脓血" id="shit-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-7">
+                                <span>脱肛</span>
+                                <input type="checkbox" name="shit" value="脱肛" id="shit-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-8">
+                                <span>滑泻失禁</span>
+                                <input type="checkbox" name="shit" value="滑泻失禁" id="shit-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-9">
+                                <span>肛门灼热</span>
+                                <input type="checkbox" name="shit" value="肛门灼热" id="shit-9" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-10">
+                                <span>排便不爽</span>
+                                <input type="checkbox" name="shit" value=" 排便不爽" id="shit-10" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-11">
+                                <span>小便涩痛</span>
+                                <input type="checkbox" name="shit" value="小便涩痛" id="shit-11" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-12">
+                                <span>夜尿多</span>
+                                <input type="checkbox" name="shit" value="夜尿多" id="shit-12" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-13">
+                                <span>余沥不尽</span>
+                                <input type="checkbox" name="shit" value="余沥不尽" id="shit-13" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-14">
+                                <span>小便失禁</span>
+                                <input type="checkbox" name="shit" value="小便失禁" id="shit-14" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="shit-15">
+                                <span>小便清长</span>
+                                <input type="checkbox" name="shit" value="小便清长" id="shit-15" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;"></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td>17</td> -->
+                        <td align="center" class="left-title">问月经、带下</td>
+                        <td colspan="6">
+                            <label for="menstruation-1">
+                                <span>月经先期</span>
+                                <input type="checkbox" name="menstruation" value="月经先期" id="menstruation-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-2">
+                                <span>月经后期</span>
+                                <input type="checkbox" name="menstruation" value="月经后期" id="menstruation-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-3">
+                                <span>月经先后不定期</span>
+                                <input type="checkbox" name="menstruation" value="月经先后不定期" id="menstruation-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-4">
+                                <span>月经量多</span>
+                                <input type="checkbox" name="menstruation" value="月经量多" id="menstruation-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-5">
+                                <span>月经量少</span>
+                                <input type="checkbox" name="menstruation" value="月经量少" id="menstruation-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-6">
+                                <span>痛经</span>
+                                <input type="checkbox" name="menstruation" value="痛经" id="menstruation-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-7">
+                                <span>闭经</span>
+                                <input type="checkbox" name="menstruation" value="闭经" id="menstruation-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-8">
+                                <span>黄带</span>
+                                <input type="checkbox" name="menstruation" value="黄带" id="menstruation-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="menstruation-9">
+                                <span>白带</span>
+                                <input type="checkbox" name="menstruation" value="白带" id="menstruation-9" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" align="center" class="left-title">切诊</td>
+                        <td align="center" class="left-title">按肌肤</td>
+                        <td colspan="6">
+                            <label for="skin-1">
+                                <span>肌肤寒冷</span>
+                                <input type="checkbox" name="skin" value="肌肤寒冷" id="skin-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="skin-2">
+                                <span>肌肤灼热</span>
+                                <input type="checkbox" name="skin" value="肌肤灼热" id="skin-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="skin-3">
+                                <span>按之疼痛缓解</span>
+                                <input type="checkbox" name="skin" value="按之疼痛缓解" id="skin-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="skin-4">
+                                <span>硬痛拒按</span>
+                                <input type="checkbox" name="skin" value="硬痛拒按" id="skin-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">切脉象</td>
+                        <td colspan="6">
+                            <label for="vein-1">
+                                <span>脉浮</span>
+                                <input type="checkbox" name="vein" value="脉浮" id="vein-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="vein-2">
+                                <span>脉沉</span>
+                                <input type="checkbox" name="vein" value="脉沉" id="vein-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="vein-3">
+                                <span>脉迟</span>
+                                <input type="checkbox" name="vein" value="脉迟" id="vein-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="vein-4">
+                                <span>脉数</span>
+                                <input type="checkbox" name="vein" value="脉数" id="vein-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="vein-5">
+                                <span>脉虚</span>
+                                <input type="checkbox" name="vein" value="脉虚" id="vein-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="vein-6">
+                                <span>脉实</span>
+                                <input type="checkbox" name="vein" value="脉实" id="vein-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <span>其它</span>
+                            <input type="text" style="width:15%;border-bottom:1px solid #666;display:inline-block;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" align="center" class="left-title">颈肩腰腿疼痛专科</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">望</td>
+                        <td colspan="7">
+                            <label for="see-1">
+                                <span>红</span>
+                                <input type="checkbox" name="see" value="红" id="see-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="see-2">
+                                <span>肿</span>
+                                <input type="checkbox" name="see" value="肿" id="see-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="see-3">
+                                <span>溃疡</span>
+                                <input type="checkbox" name="see" value="溃疡" id="see-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="see-4">
+                                <span>静脉曲张</span>
+                                <input type="checkbox" name="see" value="静脉曲张" id="see-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="see-5">
+                                <span>畸形</span>
+                                <input type="checkbox" name="see" value="畸形" id="see-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">触</td>
+                        <td colspan="7">
+                            <label for="touch-1">
+                                <span>热</span>
+                                <input type="checkbox" name="touch" value="热" id="touch-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="touch-2">
+                                <span>凉</span>
+                                <input type="checkbox" name="touch" value="凉" id="touch-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="touch-3">
+                                <span>剧痛</span>
+                                <input type="checkbox" name="touch" value="剧痛" id="touch-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="touch-4">
+                                <span>压痛</span>
+                                <input type="checkbox" name="touch" value="压痛" id="touch-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">活动</td>
+                        <td colspan="7">
+                            <label for="activity-1">
+                                <span>屈</span>
+                                <input type="checkbox" name="activity" value="屈" id="activity-1" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-2">
+                                <span>伸</span>
+                                <input type="checkbox" name="activity" value="伸" id="activity-2" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-3">
+                                <span>内旋</span>
+                                <input type="checkbox" name="activity" value="内旋" id="activity-3" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-4">
+                                <span>外旋</span>
+                                <input type="checkbox" name="activity" value="外旋" id="activity-4" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-5">
+                                <span>霍征夫曼征</span>
+                                <input type="checkbox" name="activity" value="霍征夫曼征" id="activity-5" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-6">
+                                <span>巴彬斯基征</span>
+                                <input type="checkbox" name="activity" value="巴彬斯基征" id="activity-6" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-7">
+                                <span>直腿抬高试验</span>
+                                <input type="checkbox" name="activity" value="直腿抬高试验" id="activity-7" class="historySick">
+                                <i>√</i>
+                            </label>
+                            <label for="activity-8">
+                                <span>压顶试验</span>
+                                <input type="checkbox" name="activity" value="压顶试验" id="activity-8" class="historySick">
+                                <i>√</i>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="left-title">备注</td>
+                        <td colspan="7">
+                            <textarea name="" id="" cols="80%" rows="5"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <h2>居民签名：<input type="text" style="display:inline-block;"></h2>
+        <h2>康复师：<input type="text" style="display:inline-block;"></h2>
+        <h2>日期：<input type="text" style="display:inline-block;"></h2>
+    </div>
+    <script>
+        $(function () {
+            // 为每一个textarea绑定事件使其高度自适应
+            $.each($("textarea"), function (i, n) {
+                autoTextarea($(n)[0]);
+            });
+        })
+        /**
+         * 文本框根据输入内容自适应高度
+         * {HTMLElement}   输入框元素
+         * {Number}        设置光标与输入框保持的距离(默认0)
+         * {Number}        设置最大高度(可选)
+         */
+        var autoTextarea = function (elem, extra, maxHeight) {
+            extra = extra || 0;
+            var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
+                isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera'),
+                addEvent = function (type, callback) {
+                    elem.addEventListener ?
+                        elem.addEventListener(type, callback, false) :
+                        elem.attachEvent('on' + type, callback);
+                },
+                getStyle = elem.currentStyle ?
+                function (name) {
+                    var val = elem.currentStyle[name];
+                    if (name === 'height' && val.search(/px/i) !== 1) {
+                        var rect = elem.getBoundingClientRect();
+                        return rect.bottom - rect.top -
+                            parseFloat(getStyle('paddingTop')) -
+                            parseFloat(getStyle('paddingBottom')) + 'px';
+                    };
+                    return val;
+                } : function (name) {
+                    return getComputedStyle(elem, null)[name];
+                },
+                minHeight = parseFloat(getStyle('height'));
+            elem.style.resize = 'none'; //如果不希望使用者可以自由的伸展textarea的高宽可以设置其它值
+
+            var change = function () {
+                var scrollTop, height,
+                    padding = 0,
+                    style = elem.style;
+
+                if (elem._length === elem.value.length) return;
+                elem._length = elem.value.length;
+
+                if (!isFirefox && !isOpera) {
+                    padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
+                };
+                scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+                elem.style.height = minHeight + 'px';
+                if (elem.scrollHeight > minHeight) {
+                    if (maxHeight && elem.scrollHeight > maxHeight) {
+                        height = maxHeight - padding;
+                        style.overflowY = 'auto';
+                    } else {
+                        height = elem.scrollHeight - padding;
+                        style.overflowY = 'hidden';
+                    };
+                    style.height = height + extra + 'px';
+                    scrollTop += parseInt(style.height) - elem.currHeight;
+                    document.body.scrollTop = scrollTop;
+                    document.documentElement.scrollTop = scrollTop;
+                    elem.currHeight = parseInt(style.height);
+                };
+            };
+
+            addEvent('propertychange', change);
+            addEvent('input', change);
+            addEvent('focus', change);
+            change();
+        };
+    </script>
+</body>
+
+</html>

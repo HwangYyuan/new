@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <style>
+        #map {
+            width: 700px;
+            height: 700px;
+            border: 1px solid #ccc;
+            /* background:red; */
+        }
+        #shanxing{
+            width: 700px;
+            height: 700px;
+            border: 1px solid #ccc;
+        }
+        #leida{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+        #xiaoMap{
+            width: 778px;
+            height: 637px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="xiaoMap"></div>
+    <div id="shanxing"></div>
+    <div id="leida"></div>
+    <!-- <script src="./echarts/leida.js"></script> -->
+    <!-- <script src="./echarts/fangda.js"></script> -->
+    <script>
+        let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+        console.log(clientWidth)
+        function fontSize(res){
+      let docEl = document.documentElement,
+        clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+      if (!clientWidth) return;
+      let fontSize = 100 * (clientWidth / 1920);
+      return res*fontSize;
+        }
+        var a  = fontSize(0.20)
+        console.log(a)
+        
+        //放大的地图块
+        $.get('haizhu.json', function (geoJson) {
+    var chart = echarts.init(document.getElementById('xiaoMap'));
+    echarts.registerMap('gz', geoJson);
+    chart.setOption(option = {                                                         
+        visualMap: {
+            min: 0,
+            max: 130,
+            text: ['High', 'Low'],
+            realtime: false,
+            calculable: true, //虚拟地图的属性
+            color: ['rgb(131,219,43)', 'rgb(255,130,64)', 'rgb(255,238,119)','rgb(255,75,70)']
+        },
+        geo: {
+            map: 'fangda',
+            // right:200,
+            itemStyle: { // 定义样式
+                normal: { // 普通状态下的样式
+                    // areaColor: '#fff',
+                    borderWidth: 0,
+                    shadowColor: 'rgb(122,122,122)',
+                    shadowBlur: 1,
+                    shadowOffsetX:14,
+                    shadowOffsetY:14
+//							borderColor:'red'
+                },
+                emphasis: { // 高亮状态下的样式
+                    areaColor: '#64D3FF'
+                }
+            }
+        },
+        series: [{
+            type: 'map',
+            map: 'gz',
+            scaleLimit: {
+                min: 1.2,
+                max: 1.9
+            }, //缩放
+            mapLocation: {
+                y: 60
+            },
+            silent:true,//是否触发鼠标事件
+            itemStyle: {
+                normal: {
+                    borderColor: '#fff',
+                    borderWidth: 2,
+                    label: {
+                        show: true
+                    }
+                },
+                emphasis: {
+                    label: {
+                        show: true
+                    }
+                }
+            },
+            label:{
+                normal:{
+                    fontSize:fontSize(0.20)//调整地图文字字体大小
+                }
+            },
+        }]
+    });
+});
+
+
+
+   
+
+
+
+
+
+        //圈圈块
+        var chart = echarts.init(document.getElementById('shanxing'));
+chart.setOption(option = {
+    title : {
+        text: '某站点用户访问来源',
+        subtext: '纯属虚构',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['冠心病',' 高血压','风湿类心脏病',' 心力衰竭（I - II级）',' 心绞痛','心律失常（一般性）','主动脉瘤/动脉夹层','缺血性心脏病','动脉粥样硬化/动脉狭窄','其他']
+    },
+    color:['#ff8000','#0079fe','#83af9b','#fe4365','#409f71','#fc9d9a','#07c2df','#d60017','#ffcc06','#f9cdad','#c8c8a9','#ffcc06'],
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius : '40%',
+            center: ['50%', '60%'],
+            data:[
+                {value:335, name:'冠心病'},
+                {value:310, name:' 高血压'},
+                {value:234, name:' 风湿类心脏病'},
+                {value:335, name:' 心力衰竭（I - II级）'},
+                {value:310, name:'动脉粥样硬化/动脉狭窄 '},
+                {value:548, name:'心律失常（一般性）'},
+                {value:335, name:'主动脉瘤/动脉夹层'},
+                {value:135, name:' 心绞痛'},
+                
+                {value:234, name:' 缺血性心脏病'},
+                {value:135, name:' 其他'},
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+});
+
+
+
+        //雷达块
+        var chart = echarts.init(document.getElementById('leida'));
+    chart.setOption(option = {
+        
+            title: {
+                text: '基础雷达图'
+            },
+            radar: {
+                // shape: 'circle',
+                name: {
+                    textStyle: {
+                        color: 'rgb(102,102,102)',
+                        
+                   }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: 'rgb(102,102,102)',
+                    },
+                },
+                splitLine:{
+                    lineStyle: {
+                        color: 'rgb(102,102,102)',
+                    },
+                },
+                splitArea:{
+                    show:false
+                },
+                indicator: [
+                   { name: '财务管理', max: 45},
+                   { name: '八项规定', max: 45},
+                   { name: '招标管理', max: 45},
+                   { name: '工程管理', max:45},
+                   { name: '资产管理', max: 45},
+                   { name: '营销管理', max: 45},
+                   { name: '竞争性业务', max: 45},
+                   { name: '其他', max: 45}
+                ]
+            },
+            series: [{
+                type: 'radar',
+                symbol: 'rect',
+                symbolSize: 1,
+                silent:true,
+                areaStyle: {
+                    normal: {
+                        color:'rgb(211,222,254)'
+                }},
+                data : [
+                     {
+                        value :[44, 34, 35, 43, 36, 31,45,34],
+                        label: {
+                            normal: {
+                                show: true,
+                                position:'top',
+                                color:'#000'
+                            },
+                        },
+                        lineStyle: {
+                                    color: 'rgba(73,144,250)',
+                                },
+                    }
+                ]
+            }]
+        
+    
+});
+    </script>
+</body>
+</html>

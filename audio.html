@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+<body>
+    <input type="text" class="audio"><button>语音</button>
+    <script>
+        $.ajax({
+            url:'http://tsn.baidu.com/text2audio?lan=zh&ctp=1&cuid=abcdexx&tok=24.bca1152da5e5ef29821bd22b04e98525.2592000.1559889917.282335-11036200&vol=9&per=0&spd=3&pit=5&tex=周星海',
+            success:function(res){
+                var audio = new Audio(res);
+                var res = audio.play();
+               console.log(res);
+            }
+        })
+
+    </script>
+</body>
+</html>

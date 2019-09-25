@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+        window.onload = function () {
+        let pageNum = +(localStorage.getItem('pageNum') || 0) + 1
+        localStorage.setItem('pageNum', pageNum)
+        // 三级等保要求：控制页面数量 50
+        if(pageNum > 3) {
+          alert('您打开页面数量过多了，请限制在5个内!')
+              CloseWebPage()
+        }
+        console.log(+Date.now() - (+localStorage.getItem('lastestLeaveTime')))
+        if(+Date.now() - (+localStorage.getItem('lastestLeaveTime')) > 6000) {
+          if(pageNum <= 1) { // 非多标签页
+            // 关闭窗口
+            localStorage.clear();
+            window.location.reload();
+          }
+        } else {
+          // 刷新页面
+        }
+      }
+      window.onunload = function() {
+        localStorage.setItem('lastestLeaveTime', Date.now())
+        let pageNum = +(localStorage.getItem('pageNum') || 0) - 1
+        localStorage.setItem('pageNum', pageNum === -1 ? 0 : pageNum)
+      }
+      // 关闭 当前tab页
+      function CloseWebPage(){
+        if (navigator.userAgent.indexOf("MSIE") > 0) {
+          if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {
+            window.opener = null;
+            window.close();
+          }else {
+            window.open('', '_top');
+            window.top.close();
+          }
+        }else if (navigator.userAgent.indexOf("Firefox")>0 || navigator.userAgent.indexOf("Chrome")> 0) {
+          window.location.href="about:blank";
+          window.close();
+        }else {
+          window.opener=null; 
+          window.open('','_self');
+          window.close();
+        }
+      }
+        </script>
+            
+
+
+            
+</body>
+</html>
